@@ -128,6 +128,33 @@ function animateSkills() {
     });
 }
 
+
+function copyText() {
+    // Get the textarea element
+    const textarea = document.getElementById('textArea');
+    
+    // Select the text
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // For mobile devices
+    
+    // Copy the text
+    try {
+        navigator.clipboard.writeText(textarea.value)
+            .then(() => {
+                alert('Text copied successfully!');
+            })
+            .catch(err => {
+                // Fallback for older browsers
+                document.execCommand('copy');
+                alert('Text copied successfully!');
+            });
+    } catch (err) {
+        // Fallback for older browsers
+        document.execCommand('copy');
+        alert('Text copied successfully!');
+    }
+}
+
 // Dark Mode Toggle
 function initDarkModeToggle() {
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -155,30 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function copyText() {
-    // Get the textarea element
-    const textarea = document.getElementById('textArea');
-    
-    // Select the text
-    textarea.select();
-    textarea.setSelectionRange(0, 99999); // For mobile devices
-    
-    // Copy the text
-    try {
-        navigator.clipboard.writeText(textarea.value)
-            .then(() => {
-                alert('Text copied successfully!');
-            })
-            .catch(err => {
-                // Fallback for older browsers
-                document.execCommand('copy');
-                alert('Text copied successfully!');
-            });
-    } catch (err) {
-        // Fallback for older browsers
-        document.execCommand('copy');
-        alert('Text copied successfully!');
-    }
-}
+
 
 // Additional utility functions can be added here
